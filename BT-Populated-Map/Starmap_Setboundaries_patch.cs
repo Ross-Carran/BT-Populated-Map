@@ -4,7 +4,7 @@ using System.Reflection.Emit;
 using Harmony;
 using BattleTech;
 
-namespace BTStarmap
+namespace BTPopulatedMap
 {
 
 
