@@ -7,8 +7,8 @@
     <ProjectGuid>{B8B2D6D7-7E36-4E4E-A34E-D0BDF45A524D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BTStarmap</RootNamespace>
-    <AssemblyName>BTStarmap</AssemblyName>
+    <RootNamespace>BTPopulatedMap</RootNamespace>
+    <AssemblyName>BTPopulatedMap</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
