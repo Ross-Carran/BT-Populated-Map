@@ -16,7 +16,7 @@
   "ConflictsWith": [],
   "OptionallyDependsOn": [],
   "IgnoreLoadFailure": false,
-  "DLL": "BTStarmap.dll",
+  "DLL": "BTPopulatedMap.dll",
   "DLLEntryPoint": null,
   "EnableAssemblyVersionCheck": false,
   "LoadImplicitManifest": true,
