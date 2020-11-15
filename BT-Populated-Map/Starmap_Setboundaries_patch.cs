@@ -12,7 +12,7 @@ namespace BTPopulatedMap
     {
         public static void Init(string directory, string settingsJSON)
         {
-            var harmony = HarmonyInstance.Create("ross.carran.BTStarmap");
+            var harmony = HarmonyInstance.Create("ross.carran.BTPopulatedMap");
             
             harmony.PatchAll();
         }
