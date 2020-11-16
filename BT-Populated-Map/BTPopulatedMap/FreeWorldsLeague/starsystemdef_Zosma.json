@@ -1,7 +1,7 @@
 {
   "Description": {
-    "Id": "starsystemdef_Zortman",
-    "Name": "Zortman",
+    "Id": "starsystemdef_Zosma",
+    "Name": "Zosma",
     "Details": "Zosma is a rocky, arid world with a thin atmosphere; subject to brutal levels of year-round heat from the system primary star and possessing nutrient poor soil, there are few species of native flora on the planet.",
     "Icon": ""
   },
@@ -28,7 +28,7 @@
       "planet_other_alienvegetation",
       "planet_other_boreholes",
       "planet_faction_marik",
-      "planet_name_Zortman"
+      "planet_name_Zosma"
     ],
     "tagSetSourceFile": ""
   },
@@ -140,7 +140,7 @@
   "factionShopOwnerID": "INVALID_UNSET",
   "FactionShopItems": null,
   "BlackMarketShopItems": null,
-  "CoreSystemID": "starsystemdef_Zortman",
+  "CoreSystemID": "starsystemdef_Zosma",
   "StartingSystemModes": [
     "KAMEA_CAMPAIGN",
     "CAREER",
