@@ -1027,6 +1027,8 @@
     <None Include="BTPopulatedMap\MagistryCanopy\starsystemdef_TrznadelCluster.json" />
     <None Include="BTPopulatedMap\mod.json" />
     <None Include="BTPopulatedMap\modstate.json" />
+    <None Include="BTPopulatedMap\README.md" />
+    <None Include="BTPopulatedMap\LICENSE" />
     <None Include="packages.config" />
     <None Include="BTPopulatedMap\StreamingAssets\data\starsystem\starsystemdef_Aea.json" />
     <None Include="BTPopulatedMap\StreamingAssets\data\starsystem\starsystemdef_Burton.json" />
