@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using Harmony;
 using BattleTech;
+using UnityEngine;
 
 namespace BTPopulatedMap
 {
@@ -36,10 +37,10 @@ namespace BTPopulatedMap
 
     internal class ModSettings
     {
-        public int left = -99999;
-        public int right = 99999;
-        public int top = -99999;
-        public int bottom = 99999;
+        public int left = -9999; //-9999
+        public int right = 9999; //9999
+        public int top = -9999;  //-9999
+        public int bottom = 9999; //9999
     }    
 
     [HarmonyPatch(typeof(Starmap), "SetBoundaries", new Type[] { typeof(int), typeof(int), typeof(int), typeof(int) })]
@@ -60,13 +61,16 @@ namespace BTPopulatedMap
             codes.Insert(0, new CodeInstruction(OpCodes.Starg_S, 1));
             codes.Insert(0, new CodeInstruction(OpCodes.Ldc_I4, Settings.left));
 
-            codes[17].operand = 99999f;
-            codes[19].operand = -99999f;
-            codes[21].operand = 99999f;
-            codes[23].operand = -99999f;
+            codes[17].operand = 9999f; //9999f
+            codes[19].operand = -9999f; //-9999f
+            codes[21].operand = 9999f;  //9999f
+            codes[23].operand = -9999f; //9999f
             //codes.Insert(9, new CodeInstruction(OpCodes.Ldc_R4, 99999));
 
-           /* for (int i = 0; i < codes.Count; i++) 
+            //codes.RemoveRange(56, 28);            //removes map bondaries on init
+            //codes.RemoveRange(119, 9); //91       //removes normalized in one location breaks the game.  needs to be modified inside method itself
+
+            for (int i = 0; i < codes.Count; i++) 
             {
                 try
                 {
@@ -77,17 +81,24 @@ namespace BTPopulatedMap
                     FileLog.Log(e.ToString());
                 }
   
-            }*/
+            }
             return codes;
         }
     }
 
-    [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition", MethodType.Getter)]
+  /*  [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition", MethodType.Getter)]
     public static class Normalised_Position_Patch
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
+            codes.Insert(4, new CodeInstruction(OpCodes.Newobj, typeof(Vector2)));
+
+
+            codes.Insert(5, new CodeInstruction(OpCodes.Ret));
+            codes.RemoveRange(6, 27);
+            
+
             for (int i = 0; i < codes.Count; i++)
             {
                 try
@@ -102,7 +113,7 @@ namespace BTPopulatedMap
             }
             return codes;
         }
-    }
+    }*/
 
 }
 
