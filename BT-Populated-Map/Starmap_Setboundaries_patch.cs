@@ -66,7 +66,7 @@ namespace BTPopulatedMap
             codes[23].operand = -99999f;
             //codes.Insert(9, new CodeInstruction(OpCodes.Ldc_R4, 99999));
 
-            for (int i = 0; i < codes.Count; i++) 
+           /* for (int i = 0; i < codes.Count; i++) 
             {
                 try
                 {
@@ -77,6 +77,28 @@ namespace BTPopulatedMap
                     FileLog.Log(e.ToString());
                 }
   
+            }*/
+            return codes;
+        }
+    }
+
+    [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition")]
+    public static class Normalised_Position_Patch
+    {
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var codes = new List<CodeInstruction>(instructions);
+            for (int i = 0; i < codes.Count; i++)
+            {
+                try
+                {
+                    FileLog.Log(i + ":  " + codes[i].operand.ToString());
+                }
+                catch (Exception e)
+                {
+                    FileLog.Log(e.ToString());
+                }
+
             }
             return codes;
         }
