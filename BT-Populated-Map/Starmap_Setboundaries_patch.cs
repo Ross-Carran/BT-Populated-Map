@@ -51,7 +51,7 @@ namespace BTPopulatedMap
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
-            
+//****************************************************************************************          
             //changes the values of the methods paramaters
             codes.Insert(0, new CodeInstruction(OpCodes.Starg_S, 4));
             codes.Insert(0, new CodeInstruction(OpCodes.Ldc_I4, Settings.bottom));
@@ -61,22 +61,22 @@ namespace BTPopulatedMap
             codes.Insert(0, new CodeInstruction(OpCodes.Ldc_I4, Settings.right));
             codes.Insert(0, new CodeInstruction(OpCodes.Starg_S, 1));
             codes.Insert(0, new CodeInstruction(OpCodes.Ldc_I4, Settings.left));
-
+//****************************************************************************************
             //changes the values of num,num2,num3,num4
             codes[17].operand = 1000f; //9999f
             codes[19].operand = -1000f; //-9999f
             codes[21].operand = 1000f;  //9999f
             codes[23].operand = -1000f; //9999f
             //codes.Insert(9, new CodeInstruction(OpCodes.Ldc_R4, 99999));
-
+//*****************************************************************************************
             codes.RemoveRange(56, 28);            //removes map bondaries on init, practically purges the first loop in the method.
-
+//*****************************************************************************************
             //sets the mapoffset to 0,0
             codes[70].operand = 0;                //98
             codes.RemoveAt(71);                     //99  
             codes[71].operand = 0;                //99
             codes.RemoveAt(72);                  //100
-            
+ //*****************************************************************************************           
 
             //codes.RemoveRange(119, 9); //91       //removes normalized in one location breaks the game.  needs to be modified inside method itself
 
