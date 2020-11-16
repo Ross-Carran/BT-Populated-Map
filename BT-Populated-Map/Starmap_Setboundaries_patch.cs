@@ -82,7 +82,7 @@ namespace BTPopulatedMap
         }
     }
 
-    [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition")]
+    [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition", MethodType.Getter)]
     public static class Normalised_Position_Patch
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
