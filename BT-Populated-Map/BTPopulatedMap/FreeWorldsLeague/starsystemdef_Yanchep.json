@@ -1,7 +1,7 @@
 {
   "Description": {
-    "Id": "starsystemdef_XiUrsaeMajoris",
-    "Name": "Xi Ursae Majoris",
+    "Id": "starsystemdef_Yanchep",
+    "Name": "Yanchep",
     "Details": "The Yanchep system was colonised by the Free Worlds League during the Star League era at some point after the end of the Reunification War, but opposing planetary governments constantly seeks it's independence. ",
     "Icon": ""
   },
@@ -18,7 +18,7 @@
       "planet_pop_small",
       "planet_industry_agriculture",
       "planet_faction_marik",
-      "planet_name_Xi Ursae Majoris"
+      "planet_name_Yanchep"
     ],
     "tagSetSourceFile": ""
   },
@@ -129,7 +129,7 @@
   "factionShopOwnerID": "INVALID_UNSET",
   "FactionShopItems": null,
   "BlackMarketShopItems": null,
-  "CoreSystemID": "starsystemdef_XiUrsaeMajoris",
+  "CoreSystemID": "starsystemdef_Yanchep",
   "StartingSystemModes": [
     "KAMEA_CAMPAIGN",
     "CAREER",
