@@ -37,10 +37,10 @@ namespace BTPopulatedMap
 
     internal class ModSettings
     {
-        public int left = -9999; //-9999
-        public int right = 9999; //9999
-        public int top = -9999;  //-9999
-        public int bottom = 9999; //9999
+        public int left = -1000; //-9999
+        public int right = 1000; //9999
+        public int top = -1000;  //-9999
+        public int bottom = 1000; //9999
     }    
 
     [HarmonyPatch(typeof(Starmap), "SetBoundaries", new Type[] { typeof(int), typeof(int), typeof(int), typeof(int) })]
@@ -51,7 +51,8 @@ namespace BTPopulatedMap
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
-
+            
+            //changes the values of the methods paramaters
             codes.Insert(0, new CodeInstruction(OpCodes.Starg_S, 4));
             codes.Insert(0, new CodeInstruction(OpCodes.Ldc_I4, Settings.bottom));
             codes.Insert(0, new CodeInstruction(OpCodes.Starg_S, 3));
@@ -61,15 +62,25 @@ namespace BTPopulatedMap
             codes.Insert(0, new CodeInstruction(OpCodes.Starg_S, 1));
             codes.Insert(0, new CodeInstruction(OpCodes.Ldc_I4, Settings.left));
 
-            codes[17].operand = 9999f; //9999f
-            codes[19].operand = -9999f; //-9999f
-            codes[21].operand = 9999f;  //9999f
-            codes[23].operand = -9999f; //9999f
+            //changes the values of num,num2,num3,num4
+            codes[17].operand = 1000f; //9999f
+            codes[19].operand = -1000f; //-9999f
+            codes[21].operand = 1000f;  //9999f
+            codes[23].operand = -1000f; //9999f
             //codes.Insert(9, new CodeInstruction(OpCodes.Ldc_R4, 99999));
 
-            //codes.RemoveRange(56, 28);            //removes map bondaries on init
+            codes.RemoveRange(56, 28);            //removes map bondaries on init, practically purges the first loop in the method.
+
+            //sets the mapoffset to 0,0
+            codes[70].operand = 0;                //98
+            codes.RemoveAt(71);                     //99  
+            codes[71].operand = 0;                //99
+            codes.RemoveAt(72);                  //100
+            
+
             //codes.RemoveRange(119, 9); //91       //removes normalized in one location breaks the game.  needs to be modified inside method itself
 
+            //output log, this is going to leave debug code on your desktop as Harmony.log
             for (int i = 0; i < codes.Count; i++) 
             {
                 try
