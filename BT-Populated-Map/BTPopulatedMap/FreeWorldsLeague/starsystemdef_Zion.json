@@ -1,7 +1,7 @@
 {
   "Description": {
-    "Id": "starsystemdef_Yanchep",
-    "Name": "Yanchep",
+    "Id": "starsystemdef_Zion",
+    "Name": "Zion",
     "Details": "An oft fought over border world, Zion is known for it's arid climates and Star League ruins.",
     "Icon": ""
   },
@@ -25,7 +25,7 @@
       "planet_other_starleague",
       "planet_other_hub",
       "planet_faction_marik",
-      "planet_name_Yanchep"
+      "planet_name_Zion"
     ],
     "tagSetSourceFile": ""
   },
@@ -137,7 +137,7 @@
   "factionShopOwnerID": "INVALID_UNSET",
   "FactionShopItems": null,
   "BlackMarketShopItems": null,
-  "CoreSystemID": "starsystemdef_Yanchep",
+  "CoreSystemID": "starsystemdef_Zion",
   "StartingSystemModes": [
     "KAMEA_CAMPAIGN",
     "CAREER",

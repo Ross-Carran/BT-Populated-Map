@@ -1,7 +1,7 @@
 {
   "Description": {
-    "Id": "starsystemdef_Zion",
-    "Name": "Zion",
+    "Id": "starsystemdef_Zortman",
+    "Name": "Zortman",
     "Details": "The Zortman system was settled during the First Exodus from Terra, and subsequently joined the Free Worlds League. The Center for Technology Research is renown across many systems.",
     "Icon": ""
   },
@@ -22,7 +22,7 @@
       "planet_industry_recreation",
       "planet_industry_research",
       "planet_faction_marik",
-      "planet_name_Zion"
+      "planet_name_Zortman"
     ],
     "tagSetSourceFile": ""
   },
@@ -132,7 +132,7 @@
   "factionShopOwnerID": "INVALID_UNSET",
   "FactionShopItems": null,
   "BlackMarketShopItems": null,
-  "CoreSystemID": "starsystemdef_Zion",
+  "CoreSystemID": "starsystemdef_Zortman",
   "StartingSystemModes": [
     "KAMEA_CAMPAIGN",
     "CAREER",
