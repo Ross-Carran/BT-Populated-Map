@@ -76,8 +76,15 @@ namespace BTPopulatedMap
             codes.RemoveAt(71);                     //99  
             codes[71].operand = 0;                //99
             codes.RemoveAt(72);                  //100
- //*****************************************************************************************           
-
+ //*****************************************************************************************   
+ /*next step is going to be removing the absolute value code when setting the map size.
+    step after that is to finnaly pacisfy the normaliz code, as there are too many things that call these methods
+    I'm making changes to them at the lowest point (I hope) so these changes will always be applied to anything that calls anything to do with the map
+    by getting the program to generate the map as a 2d plane as it shouldve been anyway, the normalize code should theoretically not be needed anymore
+    but as it stands, i will adjust it so it just passes a unmodified value back.
+    There is a possibility Iv'e missed something in my thought process and this will not do what i think it will do.
+    If so I've still learned a lot about IL code.
+ */
             //codes.RemoveRange(119, 9); //91       //removes normalized in one location breaks the game.  needs to be modified inside method itself
 
             //output log, this is going to leave debug code on your desktop as Harmony.log
