@@ -20,6 +20,7 @@ using System.Reflection.Emit;
 using Harmony;
 using BattleTech;
 using UnityEngine;
+using HBS.Math;
 
 namespace BTPopulatedMap
 {
@@ -64,9 +65,9 @@ namespace BTPopulatedMap
 //****************************************************************************************
             //changes the values of num,num2,num3,num4
             codes[17].operand = 500f; //9999f
-            codes[19].operand = -500f; //-9999f
+            codes[19].operand = 0f; //-9999f
             codes[21].operand = 500f;  //9999f
-            codes[23].operand = -500f; //9999f
+            codes[23].operand = 0f; //-9999f
             //codes.Insert(9, new CodeInstruction(OpCodes.Ldc_R4, 99999));
 //*****************************************************************************************
             codes.RemoveRange(56, 28);            //removes map bondaries on init, practically purges the first loop in the method.
@@ -82,8 +83,8 @@ namespace BTPopulatedMap
 
             //output log, this is going to leave debug code on your desktop as Harmony.log
 
-            codes.RemoveRange(76, 2);    //absolutes only one value 
-            codes.RemoveRange(78, 2);   //absolutes only one value
+            //codes.RemoveRange(76, 2);    //absolutes only one value 
+            //codes.RemoveRange(78, 2);   //absolutes only one value
 
 
 
@@ -103,10 +104,33 @@ namespace BTPopulatedMap
         }
     }
 
-    [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition", MethodType.Getter)]
-    public static class Normalised_Position_Patch
+    [HarmonyPatch(typeof(StarmapScreen), MethodType.Constructor)]
+    public static class Starmap_Screen_patch
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var codes = new List<CodeInstruction>(instructions);
+ 
+            for (int i = 0; i < codes.Count; i++)
+            {
+                try
+                {
+                    FileLog.Log(i + ":  " + codes[i].operand.ToString());
+                }
+                catch (Exception e)
+                {
+                    FileLog.Log(e.ToString());
+                }
+
+            }
+            return codes;
+        }
+    }
+
+    [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition", MethodType.Getter)]
+    public static class Normalised_Position_Patch
+    { 
+       /* static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
 
@@ -129,7 +153,7 @@ namespace BTPopulatedMap
 
             }
             return codes;
-        }
+        }*/
     }
 
 }
