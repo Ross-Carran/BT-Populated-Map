@@ -104,7 +104,8 @@ namespace BTPopulatedMap
         }
     }
 
-    [HarmonyPatch(typeof(StarmapScreen), MethodType.Constructor)]
+    [HarmonyPatch(typeof(StarmapScreen), "starBackgroundRT", MethodType.Getter)]    
+    
     public static class Starmap_Screen_patch
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
