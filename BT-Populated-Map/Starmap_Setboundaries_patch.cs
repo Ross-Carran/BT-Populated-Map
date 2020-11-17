@@ -88,7 +88,7 @@ namespace BTPopulatedMap
             //codes.RemoveRange(119, 9); //91       //removes normalized in one location breaks the game.  needs to be modified inside method itself
 
             //output log, this is going to leave debug code on your desktop as Harmony.log
-            for (int i = 0; i < codes.Count; i++) 
+           /* for (int i = 0; i < codes.Count; i++) 
             {
                 try
                 {
@@ -99,23 +99,21 @@ namespace BTPopulatedMap
                     FileLog.Log(e.ToString());
                 }
   
-            }
+            }*/
             return codes;
         }
     }
 
-  /*  [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition", MethodType.Getter)]
+    [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition", MethodType.Getter)]
     public static class Normalised_Position_Patch
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
-            codes.Insert(4, new CodeInstruction(OpCodes.Newobj, typeof(Vector2)));
 
-
-            codes.Insert(5, new CodeInstruction(OpCodes.Ret));
-            codes.RemoveRange(6, 27);
-            
+            //removes the math from both vectors, returning base values.            
+            codes.RemoveRange(5, 11);
+            codes.RemoveRange(7, 11);
 
             for (int i = 0; i < codes.Count; i++)
             {
@@ -131,7 +129,7 @@ namespace BTPopulatedMap
             }
             return codes;
         }
-    }*/
+    }
 
 }
 
