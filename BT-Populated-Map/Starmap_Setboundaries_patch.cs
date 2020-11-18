@@ -82,5 +82,28 @@ namespace BTPopulatedMap
         }
     }
 
+    [HarmonyPatch(typeof(StarmapRenderer), "NormalizeToMapSpace")]
+    public static class Starmap_Renderer_patch
+    {
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var codes = new List<CodeInstruction>(instructions); 
+
+            for (int i = 0; i < codes.Count; i++)
+            {
+                try
+                {
+                    FileLog.Log(i + ":  " + codes[i].operand.ToString());
+                }
+                catch (Exception e)
+                {
+                    FileLog.Log(e.ToString());
+                }
+
+            }
+            return codes;
+        }
+    }
+
 }
 
