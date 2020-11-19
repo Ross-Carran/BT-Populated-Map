@@ -66,7 +66,7 @@ namespace BTPopulatedMap
             codes[23].operand = -99999f;
             //codes.Insert(9, new CodeInstruction(OpCodes.Ldc_R4, 99999));
 
-            for (int i = 0; i < codes.Count; i++) 
+            /*for (int i = 0; i < codes.Count; i++) 
             {
                 try
                 {
@@ -77,9 +77,37 @@ namespace BTPopulatedMap
                     FileLog.Log(e.ToString());
                 }
   
+            }*/
+            return codes;
+        }
+    }
+
+    [HarmonyPatch(typeof(StarSystemNode), "NormalizedPosition", MethodType.Getter)]
+
+    public static class Normalized_Position_Patch
+    {
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var codes = new List<CodeInstruction>(instructions);
+
+            //This is a pre-emptive credit to the person on Discord ("name") who my brain is a siv will be added after this is made for giving awesome insite and 
+            //the structure for the code that will be put in here. Im clueless with this stuff!
+
+            for (int i = 0; i < codes.Count; i++)
+            {
+                try
+                {
+                    FileLog.Log(i + ":  " + codes[i].operand.ToString());
+                }
+                catch (Exception e)
+                {
+                    FileLog.Log(e.ToString());
+                }
+
             }
             return codes;
         }
+
     }
 
 }
