@@ -89,9 +89,19 @@ namespace BTPopulatedMap
         {
             var codes = new List<CodeInstruction>(instructions);
 
-
-            codes[22].operand = 1;
+            //codes[22].operand = 1;
             //codes.RemoveRange(3, 22);
+
+
+            //x - z code
+            CodeInstruction zSwap = codes[2];
+            CodeInstruction xSwap = codes[28];
+
+            codes.RemoveAt(2);
+            codes.Insert(2, xSwap);
+            codes.RemoveAt(28);
+            codes.Insert(28, zSwap);
+
 
             for (int i = 0; i < codes.Count; i++)
             {
