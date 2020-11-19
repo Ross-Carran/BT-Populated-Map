@@ -66,7 +66,7 @@ namespace BTPopulatedMap
             codes[23].operand = -99999f;
             //codes.Insert(9, new CodeInstruction(OpCodes.Ldc_R4, 99999));
 
-            for (int i = 0; i < codes.Count; i++) 
+            /*for (int i = 0; i < codes.Count; i++) 
             {
                 try
                 {
@@ -77,7 +77,7 @@ namespace BTPopulatedMap
                     FileLog.Log(e.ToString());
                 }
   
-            }
+            }*/
             return codes;
         }
     }
@@ -87,7 +87,11 @@ namespace BTPopulatedMap
     {
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            var codes = new List<CodeInstruction>(instructions); 
+            var codes = new List<CodeInstruction>(instructions);
+
+
+            codes[22].operand = 1;
+            //codes.RemoveRange(3, 22);
 
             for (int i = 0; i < codes.Count; i++)
             {
