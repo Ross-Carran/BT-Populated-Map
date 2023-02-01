@@ -1,0 +1,5 @@
+{
+  "Name": "Planets and Stuff",
+  "DLL": "BT_Starmap_Mod.dll",
+  "DLLEntryPoint": "BT_Starmap_Mod.Main.Start"
+}
