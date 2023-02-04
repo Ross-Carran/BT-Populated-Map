@@ -13,17 +13,23 @@ public class BoundaryValues
     public class ChangeBoundaryValues
     {
         private static readonly ILog s_log = Logger.GetLogger(nameof(BoundaryValues));
+        [HarmonyTranspiler]
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
-            foreach (var code in codes)
+            int[] fieldLoc = new int[4];
+            int fieldLocCounter = 0;
+            
+            for (var i = 0; i < codes.Count; i++)
             {
-                
-                if (code.ToString().Contains("9999"))
+                if (codes[i].ToString().Contains("9999"))
                 {
-                    s_log.Log(code.operand);
-                    code.operand = 200f;
-                    s_log.Log((code.operand));
+                    fieldLoc[fieldLocCounter] = i;
+                    fieldLocCounter++;
+                    
+                    s_log.Log(codes[i].operand);
+                    codes[i].operand = 200f;
+                    s_log.Log((codes[i].operand));
                 }
             }
             
@@ -50,8 +56,14 @@ public class BoundaryValues
             {
                 codes.RemoveRange(startIndex,endIndex - startIndex);
             }
+            
+            codes[fieldLoc[0]].operand = Settings.num1;
+            codes[fieldLoc[1]].operand = Settings.num2;
+            codes[fieldLoc[2]].operand = Settings.num3;
+            codes[fieldLoc[3]].operand = Settings.num4;
 
             return codes;
+
         }
     }
 }
