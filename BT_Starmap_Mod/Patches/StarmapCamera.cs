@@ -13,7 +13,8 @@ public class StarmapCamera
     public class CameraBoundariesPatch
     {
         private static readonly ILog s_log = Logger.GetLogger(nameof(StarmapCamera));
-        static IEnumerable<CodeInstruction> transpiler(IEnumerable<CodeInstruction> instructions)
+        [HarmonyTranspiler]
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             
             var codes = new List<CodeInstruction>(instructions);
@@ -21,7 +22,6 @@ public class StarmapCamera
             {
                 s_log.Log(codes[i].ToString());
             }
-
             return codes;
         }
     }
